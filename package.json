@@ -1,0 +1,19 @@
+{
+  "name": "splitzi_api",
+  "version": "1.0.0",
+  "description": "splitzi_api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tfrankie88/splitzi_api.git"
+  },
+  "author": "norrin radd",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tfrankie88/splitzi_api/issues"
+  },
+  "homepage": "https://github.com/tfrankie88/splitzi_api#readme"
+}
