@@ -10,12 +10,12 @@ describe('Restaurants', () => {
 
   let token;
 
-  after((done) => {
-    //Delete all records from users table
-    db.none('DELETE FROM restaurants').then(() => {
-      done();
-    });
-  });
+  // after((done) => {
+  //   //Delete all records from users table
+  //   db.none('DELETE FROM restaurants').then(() => {
+  //     done();
+  //   });
+  // });
 
   it('POST /restaurants/sign_up should return a 201 status code and should give us back the newly created object', (done) => {
     request(app)
@@ -29,12 +29,11 @@ describe('Restaurants', () => {
         restaurant_name: 'Bob\'s Burgers',
         country: 'USA',
         postal: 17740,
-        access: false
+        access: true
       }
     })
     .end((err, results) => {
-      // console.log(results.body);
-      expect(results.statusCode).to.equal(200);
+      expect(results.statusCode).to.equal(201);
       expect(results.body).to.be.an.instanceOf(Object);
       expect(results.body).to.not.be.an.instanceOf(Array);
       done();

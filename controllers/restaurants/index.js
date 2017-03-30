@@ -6,8 +6,8 @@ const auth = require("../../services/authentication");
 
 router.post('/sign_up', controller.create);
 
-// router.get('/login', auth.restrict, controller.index);
+router.post('/login', auth.restrict, controller.processLogin);
 
-// router.post('/login', controller.login);
+router.get('/restrict', controller.restricted);
 
 module.exports = router;
