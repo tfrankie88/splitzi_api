@@ -4,7 +4,8 @@ const db = require('../config/db');
 let Restaurant ={}
 
 Restaurant.create = (restaurant) => {
-  // restaurant.password_digest = bcrypt.hashSync(restaurant.password, 10);
+  console.log('restaurant in models: ', restaurant)
+  password_digest = bcrypt.hashSync(restaurant.password_digest, 10);
   return db.one(`
     INSERT INTO restaurants
     (first_name,
@@ -20,19 +21,19 @@ Restaurant.create = (restaurant) => {
   `,[restaurant.first_name,
     restaurant.last_name,
     restaurant.email,
-    restaurant.password_digest,
+    password_digest,
     restaurant.restaurant_name,
     restaurant.country,
     restaurant.postal,
     true]);
 }
 //
-// Restaurant.findByEmail = (email) => {
-//   return db.one(`
-//     SELECT * FROM restaurants
-//     WHERE email = $1;`,
-//     [email]
-//   );
-// };
+Restaurant.findByEmail = (email) => {
+  return db.one(`
+    SELECT * FROM restaurants
+    WHERE email = $1;`,
+    [email]
+  );
+};
 
 module.exports = Restaurant;

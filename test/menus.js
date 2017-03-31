@@ -28,8 +28,6 @@ describe('Menus', () => {
     })
     .then((restaurant_data) => {
       restaurant = restaurant_data;
-      console.log('restaurant data:', restaurant_data);
-
       Menu
       .create({
         item: 'pizza slice',
@@ -38,7 +36,6 @@ describe('Menus', () => {
       })
       .then((menu_data) => {
         menu = menu_data;
-        console.log('menu data:', menu_data);
         done();
       });
     });

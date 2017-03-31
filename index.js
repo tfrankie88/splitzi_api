@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
-var jwt = require('express-jwt');
+// var jwt = require('express-jwt');
 
 const cors = require('cors');
 app.use(cors());
+require('dotenv').config();
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -17,7 +18,7 @@ app.use(bodyParser.json());
 
 app.use(require('./resources'));
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   console.log('Server listening on', PORT)
 });

@@ -4,9 +4,8 @@ let AuthenticationService = {};
 
 AuthenticationService.restrict = (req, res, next) => {
   if (req.headers['authorization']) {
-    jwt.verify(req.headers['authorization'], 'keyboard cat', (err, payload) => {
+    jwt.verify(req.headers['authorization'], myToken, (err, payload) => {
       if (!err) {
-        //Add restaurant to the request for each authenticated route
         req.restaurant = payload;
         next();
       } else {

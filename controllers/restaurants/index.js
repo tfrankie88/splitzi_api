@@ -6,7 +6,7 @@ const auth = require("../../services/authentication");
 
 router.post('/sign_up', controller.create);
 
-router.post('/login', auth.restrict, controller.processLogin);
+router.post('/login', controller.processLogin);
 
 router.get('/restrict', controller.restricted);
 

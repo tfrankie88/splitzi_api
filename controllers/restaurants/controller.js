@@ -1,11 +1,14 @@
 bcrypt = require('bcrypt');
 jwt = require('jsonwebtoken');
 
+myToken = process.env.myToken
+
 const Restaurant = require('../../models/restaurant');
 
 let controller = {};
 
-controller.create = (req,res) => {
+controller.create = (req, res) => {
+  console.log('req.body', req.body)
   Restaurant
   .create(req.body.restaurant)
   .then((restaurant) => {
@@ -19,26 +22,29 @@ controller.create = (req,res) => {
 }
 
 controller.processLogin = (req, res) => {
+  console.log('we are in process login')
   Restaurant
-  .findByEmail(req.body.email)
+  .findByEmail(req.body.restaurant.email)
   .then((restaurant) =>{
     if (restaurant) {
-      const isAuthed = bcrypt.compareSync(req.body.password, user.password_digest);
+      console.log('restaurant exists')
+      const isAuthed = bcrypt.compareSync(req.body.restaurant.password, restaurant.password);
       if (isAuthed) {
+
         console.log('isAuthed is true', isAuthed);
-        const authRestaurant = {
-          first_name: restaurant.first_name,
-          restaurant_name: restaurant.restaurant_name,
-          email: restaurant.email,
-          country: restaurant.country,
-          postal: restaurant.postal
-        }
-        const token = jwt.sign({email: req.body.email}, "Bringo", {
-            expiresIn: "1y"
+        const token = jwt.sign({email: restaurant.email}, myToken, {
+          expiresIn: "7d"
         });
+        // const authRestaurant = {
+        //   first_name: restaurant.first_name,
+        //   restaurant_name: restaurant.restaurant_name,
+        //   email: restaurant.email,
+        //   country: restaurant.country,
+        //   postal: restaurant.postal
+        // }
         res.json({
           token: token,
-          user: authRestaurant
+          restaurant: restaurant
         });
         // console.log(authRestaurant)
       } else {
