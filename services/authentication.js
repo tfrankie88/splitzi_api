@@ -5,6 +5,7 @@ let AuthenticationService = {};
 AuthenticationService.restrict = (req, res, next) => {
   if (req.headers['authorization']) {
     jwt.verify(req.headers['authorization'], myToken, (err, payload) => {
+      console.log(payload);
       if (!err) {
         req.restaurant = payload;
         next();

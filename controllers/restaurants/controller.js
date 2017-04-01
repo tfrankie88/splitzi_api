@@ -35,18 +35,14 @@ controller.processLogin = (req, res) => {
         const token = jwt.sign({email: restaurant.email}, myToken, {
           expiresIn: "7d"
         });
-        // const authRestaurant = {
-        //   first_name: restaurant.first_name,
-        //   restaurant_name: restaurant.restaurant_name,
-        //   email: restaurant.email,
-        //   country: restaurant.country,
-        //   postal: restaurant.postal
-        // }
         res.json({
           token: token,
           restaurant: restaurant
-        });
-        // console.log(authRestaurant)
+          // restaurant_name: restaurant.restaurant_name,
+          // id: restaurant.id
+        })
+        console.log(token);
+        console.log(restaurant);
       } else {
         console.log('is Authed is false')
       }
