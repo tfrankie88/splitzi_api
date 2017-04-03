@@ -2,7 +2,14 @@ const db = require('../config/db');
 
 let Menu ={};
 
-Menu.create = (menu, id) => {
+Menu.findById = (id) => {
+  return db.oneOrNone(`
+    SELECT * FROM restuarants
+    WHERE id = $1
+  `,[id]);
+}
+
+Menu.create = (menu, restaurant_id) => {
   return db.one(`
     INSERT INTO menus
     (item,
@@ -11,7 +18,7 @@ Menu.create = (menu, id) => {
     VALUES ($1, $2, $3) RETURNING *
   `,[menu.item,
     menu.price,
-    menu.restaurant_id]);
+    restaurant_id]);
 }
 
 Menu.update = (menu, id) => {

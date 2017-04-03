@@ -2,9 +2,23 @@ const Menu = require("../../models/menu");
 
 let controller = {};
 
+controller.index = (req, res) => {
+    Menu
+    .findAll()
+    .then((menus) => {
+        res.json(menus);
+    })
+    .catch((err) => {
+        res
+        .status(400)
+        .json(err);
+    });
+}
+
 controller.create = (req, res) => {
+  console.log('req.params.restaurantid', req.params.restaurant_id);
   Menu
-  .create(req.body.menu)
+  .create(req.body.menu, req.params.restaurant_id)
   .then((menu) => {
       res
       .status(201)

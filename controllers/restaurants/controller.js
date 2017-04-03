@@ -7,6 +7,21 @@ const Restaurant = require('../../models/restaurant');
 
 let controller = {};
 
+controller.show = (req, res) => {
+  console.log('got to show');
+  Restaurant
+  .findById(req.params.id)
+  .then((restaurant) => {
+    console.log('got to find with req.params.id', req.params.id);
+    res.json(restaurant);
+  })
+  .catch((err) => {
+    res
+    .status(400)
+    .json(err);
+  });
+}
+
 controller.create = (req, res) => {
   console.log('req.body', req.body)
   Restaurant
