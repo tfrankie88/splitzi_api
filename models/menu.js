@@ -4,9 +4,16 @@ let Menu ={};
 
 Menu.findById = (id) => {
   return db.oneOrNone(`
-    SELECT * FROM restuarants
+    SELECT * FROM restaurants
     WHERE id = $1
   `,[id]);
+}
+
+Menu.findAll = (restaurant_id) => {
+  return db.many(`
+    SELECT * FROM menus
+    WHERE restaurant_id = $1
+  `,[restaurant_id]);
 }
 
 Menu.create = (menu, restaurant_id) => {

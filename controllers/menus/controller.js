@@ -3,15 +3,18 @@ const Menu = require("../../models/menu");
 let controller = {};
 
 controller.index = (req, res) => {
+  console.log('hits index');
+  console.log('this is req.params', req.params);
     Menu
-    .findAll()
+    .findAll(req.params.restaurant_id)
     .then((menus) => {
-        res.json(menus);
+      console.log('returing menu items', menus)
+      res.json(menus);
     })
     .catch((err) => {
-        res
-        .status(400)
-        .json(err);
+      res
+      .status(400)
+      .json(err);
     });
 }
 

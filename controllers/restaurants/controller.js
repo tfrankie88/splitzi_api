@@ -22,6 +22,19 @@ controller.show = (req, res) => {
   });
 }
 
+controller.showByName = (req, res) => {
+  Restaurant
+  .findByName(req.params.restaurant_name)
+  .then((restaurant) => {
+  res.json(restaurant);
+  })
+  .catch((err) => {
+    res
+    .status(400)
+    .json(err);
+  });
+}
+
 controller.create = (req, res) => {
   console.log('req.body', req.body)
   Restaurant

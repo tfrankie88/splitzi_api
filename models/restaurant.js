@@ -31,9 +31,16 @@ Restaurant.create = (restaurant) => {
 Restaurant.findByEmail = (email) => {
   return db.one(`
     SELECT * FROM restaurants
-    WHERE email = $1;`,
-    [email]
-  );
+    WHERE email = $1;
+  `,[email]);
 };
+
+Restaurant.findByName = (name) => {
+  return db.one(`
+    SELECT * FROM
+    restaurants WHERE
+    restaurant_name = $1
+  `,[name]);
+}
 
 module.exports = Restaurant;

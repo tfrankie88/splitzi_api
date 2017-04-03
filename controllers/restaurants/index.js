@@ -6,6 +6,8 @@ const auth = require("../../services/authentication");
 
 router.get('/:id', auth.restrict, controller.show);
 
+router.get('/name/:restaurant_name', controller.showByName)
+
 router.post('/sign_up', controller.create);
 
 router.post('/login', controller.processLogin);
