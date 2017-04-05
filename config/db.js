@@ -1,13 +1,9 @@
 const pgp = require('pg-promise')();
 
-// const db = pgp ({
-//   host: 'localhost',
-//   port: 5432,
-//   database: 'splitzi'
-// });
-
-const connection = process.env.DATABASE_URL;
-
-const db = pgp(connection);
+const db = pgp (process.env.DATABASE_URL || {
+  host: 'localhost',
+  port: 5432,
+  database: 'splitzi'
+});
 
 module.exports = db;
