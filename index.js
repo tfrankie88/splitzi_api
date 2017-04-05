@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 
 app.use(require('./resources'));
 
-const PORT = process.env.PORT || 8000;
+const port = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log('Server listening on', PORT)
 });
