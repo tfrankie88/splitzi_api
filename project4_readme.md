@@ -8,68 +8,89 @@ This final project is a menu database designed to assists in diner's payment met
 1.) **Explanations of the technologies used**
 
 - This project used<br>
+• **[css]**<br>
+general style of the site<br>
+• **[javascript]**<br>
+language to implement the fundimental logic of the site
 • **[EXPRESS]**<br>
 was used to implement the routing structure of the backend<br>
-• **[node.js]** was the environment for the communication between server and & application<br>
+• **[node.js]** was the JavaScript environment for the communication between server and & application<br>
 • **[CSS]**<br>
 gave the style and organized the layout/aesthetics of the site<br>
-• **[REACT => JSX]**<br>
+• **[REACT-JSX]**<br>
 is a feature-rich JavaScript environment which allows for single page functionality<br>
-• **[BROWSER]** developer tools in both **[Google Chrome]** and **[Apple Safari]**, for debugging logic commands and making adjustments prior to changing the source code.<br>
+• **[React-Slingshot]**<br>
+out of the box React environment for rapid application development<br>
+• **BROWSER** developer tools in both **[Google Chrome]** and **[Apple Safari]**, for debugging logic commands and making adjustments prior to changing the source code.<br>
 • **[PSQL]** building database<br>
-• **[npm packages express]** modules for simplifying large chuncks of complex code
+• **[npm packages]** modules for simplifying large chuncks of complex code
 *body parser* - pulls from the massive amount of meta data,
 *morgan* - logger,
 *path* - grabs local static files,
-*pg-promise* - simplifies communication with postgres,
-2.) **Approach Taken**
+*pg-promise* - simplifies communication with postgres
+• **[Heroku]** web application deployment and database<br>
 
-- This application required major planning for the CRUD application while remembering to apply smaller functions in order to support and ease user experience. Before any major functionality began it was important to set up a wireframe, and ![schema]. Once the wireframe was done I began setting up the project by.
->
-1.creating project folder and initializing npm which delivered the desired json packages<br> 2. creating an index folder which requires the specific dependencies and link to the resources which directed the proper routes to the controllers.<br> 3. using the index, controller and wiki.js models modules I was able to build out the crud application <br> 4. inside of the controller.js and wiki.js is where the necessary functionality was used for the CRUD appliction. <br>5. the wiki.js file is the module that allowed for communicating and editing the wiki_page table that was made in sql, while the controller.js file was the switch necessary for communication between user input and sql edits/updates
-- In addition to the basic crud application functions utilizing the npm packages timestamp and markdown were used for recording the time a user update the schema with DATE key specific data, as well as allowing them to style the definition with markdown and having it rendered in the show page.
-- In the public folder I was able to use a hover function so Method-Man could prompt the user to add information.
-- For DOM manipulation the embedded javascript files were used. Using the *<% %>* notation, I was able to pull schema date and embed it right into the html file.
-- Once the logic was stable I finally began coding out the CSS using a bootstrap template that allowed for a navigation to be hidden on mobile when not needed.
+2.) **Approach Taken**
+*backend*
+- plan/build schema
+- set routes in api
+- build models
+- test routes and models
+  - back end consists of two tables in splitzi database<br>![schema]
+  **table 1:** restaurant/user<br>
+  **table 2:** menu connected to restaurant with restaurant_id
+  - search for menu was conducted in a one to many
+*front end*
+- access React Slingshot
+- build layout and components
+- connect fetch calls for post and get coveralls
 
 ***Thank you all who helped***.<br>
 
 3.) **User Stories**
+- their are essentially two user stories
+- **restaurant user**
+  - a restaurant owner can..
+    • create a profile
+    • securely log in via bcrypt hash syncing and json web tokens
+    • add menu items and their price to database associated to menu
+    • log out
+- **restaurant patron**
+  - a patron does not need to log in to access the service
+  - a patron can search for restuarants and pull a restaurants menu as long as it exists in the database
 
-- As a user I should be able to scroll over method man's face and have him talk to me
-- As a user I should be able to click on method-man to create a new method item
-- In the create *new* page as a user I should be able to label the item, give it a category and define the method and submit this information to the database
-- In the define input area a user can write in markdown, and after saving the markdown will be rendered in the show page
-- As a user I should be able to see the categories to the left when traveling back to the home page.
-- As a user I should be able to select that category and reveal a new page which contains all of the elements within that category.
-- As a user I should be able to click on one of those items and edit them on a *edit* page
-- As a user I should be able to delete an item.<br>
+
 
 4.) **Wireframe**<br>
-![wireframe]
+![wireframe1]
+![wireframe3]
+![wireframe2]
+![wireframe4]
 
 5.) **How To Use**
 
 Using simple clicks and hovers a user can navigate the layout and utilize the full crud application, on both mobile and desktop device.
 
 6.) **Unsolved Problems**
+- I wouldn't call the next phase in this build problems as much as next steps. In ordet to have the successful application that I dream to build I need to control react more and utilize it's states better. Once I can accomplish that I want to build out he components and implement the math logic of dividing menu items and associating each diner to their respected item or item fraction price.
 
-I found this project challenging and focused heavily on the functionality. I spent the majority of my time on the functionality mainly because it is why I am here. Styling has it's difficulties but I really just wish I had more time for it on this project more than anything.
+- I also found a great API for searching taxes associated to the state that the restaurant is located in. Because each restaurant was asked to give their state and postal code in signup those parameters can be used in the [API] fetch call along with the key that I acquired, that will be be divided and added to each patron in the final calculation.
 
-- The first thing I would definitely add would be a search bar that could zero in on a specific title within the already simplified category selection. I wanted to attempt further but I had to stop to accomplish a finished product.
-- To be honest I wish I used materialize instead of bootstrap. I found bootstrap more limiting than anything, and it felt like I was editing a squarespace page. I read through both materialize and bootstraps documentation, but made the wrong choice for my personal style. I was upset because I felt like I was using the !important tag in the CSS more often than not in order to override the bootstrap styling. What I liked about materialize is that it wasn't necessarily heavy on the templating full layouts like bootstrap but more giving you elements to render cool animations and icons.
-- As I dived deeper and deeper into the crud modules capabilities I realized how much functionality could be built upon the original crud modules. I need to really work on smaller functions within each CRUD module to utilize their potential. I liked the string concatenation that was necessary for getting the DATE data key to recognize the timestamp function, as well as the markdown rendering, and the forEach loops when embedding the javascript. With more time I would have definitely cleaned up my code much more, and of course I could have spent days on stylizing the app.
-
-[HTML]:http://html.com/
 [CSS]: https:en.wikipedia.org/wiki/Cascading_Style_Sheets
 [JavaScript]: https://www.javascript.com/
 [jQuery]:https:jquery.com/
 [Google Chrome]:https://developers.google.com/web/tools/
 [Apple Safari]:https://developer.apple.com/library/content/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/Introduction/Introduction.html
 [node.js]:https://nodejs.org/en/
-[SQL]:https://www.postgresql.org/
+[REACT-JSX]:https://facebook.github.io/react/
+[React-Slingshot]:https://github.com/coryhouse/react-slingshot
+[PSQL]:https://www.postgresql.org/
 [express]:https://www.npmjs.com/package/express
 [bootstrap]:http://getbootstrap.com/
 [npm packages]:https://www.npmjs.com/
-[schema]:http://i.imgur.com/CF1fD31.png
-[wireframe]:http://i.imgur.com/PeIRJHk.jpg
+[heroku]:heroku.com
+[schema]:http://i.imgur.com/TY7pfB0.png
+[wireframe1]:http://i.imgur.com/WyIlLzu.png
+[wireframe3]:http://i.imgur.com/DUtsoUb.png
+[wireframe2]:http://i.imgur.com/VIXduK7.png
+[wireframe4]:http://i.imgur.com/OaoArqZ.png
